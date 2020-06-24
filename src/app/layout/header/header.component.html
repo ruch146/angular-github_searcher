@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!--Instead of href we have these routerLink so that we can route through-->
+    <a  class="navbar-brand" [routerLink]="['/']">
+        <img src="../../../assets/img.png" width="30" height="30" />
+         GitHub Finder App
+    </a>
+    <div class="navbar-collapse">
+        <div class="navbar-nav ml-auto">
+            <!--Display only if amail is there-->
+            <div  *ngIf="email" class="navbar-text float-left">
+                  {{email}}
+            </div>
+            <!--Roter link active automatically detects which link is active-->
+            <a class="nav-item nav-link" [routerLink]=" ['/'] ">Home</a>
+            <a 
+            routerLinkActive="active"
+            *ngIf="!email" class="nav-item nav-link" [routerLink]=" ['/signin'] ">Sign In</a>
+            <a *ngIf="!email"
+            routerLinkActive="active"
+            class="nav-item nav-link" [routerLink]=" ['/signup'] ">Sign Up</a>
+            <a *ngIf="email" class="nav-item nav-link" (click)="handleSignOut()">Log Out</a>
+        </div>
+    </div>
+</nav >               
